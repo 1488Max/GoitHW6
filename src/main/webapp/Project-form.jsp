@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Project Management Application</title>
@@ -44,32 +44,35 @@
                     </caption>
 
                     <c:if test="${project != null}">
-                        <input type="hidden" name="id" value="<c:out value='${project.id}' />" />
+                        <input type="hidden" name="id" value="<c:out value='${project.id}' />"/>
                     </c:if>
 
                     <fieldset class="form-group">
                         <label>Project Name</label> <input type="text"
-                                                             value="<c:out value='${project.name}' />" class="form-control"
-                                                             name="name" required="required">
+                                                           value="<c:out value='${project.name}' />"
+                                                           class="form-control"
+                                                           name="name" required="required">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label>Project Time Of Creation</label> <input type="datetime-local"
-                                                            value="<c:out value='${project.time_of_creation}' />" class="form-control"
-                                                            name="time_of_creation">
+                                                                       value="<c:out value='${project.time_of_creation}' />"
+                                                                       class="form-control"
+                                                                       name="time_of_creation">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label>Customer</label> <input type="text"
-                                                               value="<c:out value='${project.customer}' />" class="form-control"
-                                                               name="customer">
+                                                       value="<c:out value='${project.customer}' />"
+                                                       class="form-control"
+                                                       name="customer">
                     </fieldset>
 
-                        <fieldset class="form-group">
-                            <label>Company</label> <input type="text "
-                                                                   value="<c:out value='${project.company}' />" class="form-control"
-                                                                   name="company">
-                        </fieldset>
+                    <fieldset class="form-group">
+                        <label>Company</label> <input type="text "
+                                                      value="<c:out value='${project.company}' />" class="form-control"
+                                                      name="company">
+                    </fieldset>
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
         </div>

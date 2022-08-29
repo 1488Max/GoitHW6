@@ -66,7 +66,7 @@ public class Servlet extends HttpServlet {
                     updateCustomer(request, response);
                     break;
                 case "/listCustomer":
-                    listCustomer(request,response);
+                    listCustomer(request, response);
                     break;
                 case "/newProject":
                     showNewFormProject(request, response);
@@ -84,7 +84,7 @@ public class Servlet extends HttpServlet {
                     updateProject(request, response);
                     break;
                 case "/listProject":
-                    listProject(request,response);
+                    listProject(request, response);
                     break;
                 default:
                     listDeveloper(request, response);
@@ -138,7 +138,7 @@ public class Servlet extends HttpServlet {
         int salary = Integer.parseInt(request.getParameter("salary"));
 
         Developer developer = new Developer(id, name, sex, salary);
-        DeveloperDao.updateDeveloper(developer,id);
+        DeveloperDao.updateDeveloper(developer, id);
         response.sendRedirect("ViewDevelopers.jsp");
     }
 
@@ -149,6 +149,7 @@ public class Servlet extends HttpServlet {
         response.sendRedirect("ViewDevelopers.jsp");
 
     }
+
     private void listCustomer(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<Customer> listCustomer = CustomerDao.getAllCustomers();
@@ -177,7 +178,7 @@ public class Servlet extends HttpServlet {
             throws SQLException, IOException {
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
-        Customer customer = new Customer(name,surname);
+        Customer customer = new Customer(name, surname);
         CustomerDao.createCustomer(customer);
         response.sendRedirect("ViewCustomer.jsp");
     }
@@ -188,8 +189,8 @@ public class Servlet extends HttpServlet {
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
 
-        Customer customer = new Customer(name,surname);
-        CustomerDao.updateCustomer(customer,id);
+        Customer customer = new Customer(name, surname);
+        CustomerDao.updateCustomer(customer, id);
         response.sendRedirect("ViewCustomer.jsp");
 
     }
@@ -234,7 +235,7 @@ public class Servlet extends HttpServlet {
         long companyId = Long.parseLong(request.getParameter("company_id"));
 
 
-        ProjectDao.createProject(new Project(name,time_of_creation,customerId,customerId));
+        ProjectDao.createProject(new Project(name, time_of_creation, customerId, customerId));
         response.sendRedirect("ViewProject.jsp");
     }
 
@@ -246,7 +247,7 @@ public class Servlet extends HttpServlet {
         long customerId = Long.parseLong(request.getParameter("customer_id"));
         long companyId = Long.parseLong(request.getParameter("company_id"));
 
-        ProjectDao.updateProject(new Project(name,time_of_creation,customerId,companyId),id);
+        ProjectDao.updateProject(new Project(name, time_of_creation, customerId, companyId), id);
         response.sendRedirect("ViewProject.jsp");
 
     }

@@ -18,6 +18,22 @@ public class Skill {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "technology")
+    @NonNull
+    private String technology;
+
+    @Column(name = "skill")
+    @NonNull
+    private String skill;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "developer_skill",
+            joinColumns = @JoinColumn(name = "developer_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    private List<Developer> developers;
+
     public long getId() {
         return id;
     }
@@ -50,20 +66,7 @@ public class Skill {
         this.developers = developers;
     }
 
-    @Column(name = "technology")
-    @NonNull
-    private String technology;
 
-    @Column(name = "skill")
-    @NonNull
-    private String skill;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "developer_skill",
-            joinColumns = @JoinColumn(name = "developer_id"),
-            inverseJoinColumns = @JoinColumn(name = "skill_id")
-    )
-    private List<Developer> developers;
-    public Skill() {}
+    public Skill() {
+    }
 }

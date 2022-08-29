@@ -29,6 +29,23 @@ public class Developer {
     @NonNull
     private int salary;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "developer_project",
+            joinColumns = @JoinColumn(name = "developer_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
+    private List<Project> projects;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "developer_skill",
+            joinColumns = @JoinColumn(name = "skill_id"),
+            inverseJoinColumns = @JoinColumn(name = "developer_id")
+    )
+    private List<Skill> skills;
+
+
     public Developer(long id, @NonNull String name, @NonNull String sex, @NonNull int salary) {
         this.id = id;
         this.name = name;
@@ -52,15 +69,7 @@ public class Developer {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Developer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", salary=" + salary +
-                '}';
-    }
+
 
     public String getSex() {
         return sex;
@@ -94,25 +103,19 @@ public class Developer {
         this.skills = skills;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "developer_project",
-            joinColumns = @JoinColumn(name = "developer_id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id")
-    )
-    private List<Project> projects;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "developer_skill",
-            joinColumns = @JoinColumn(name = "skill_id"),
-            inverseJoinColumns = @JoinColumn(name = "developer_id")
-    )
-    private List<Skill> skills;
+    @Override
+    public String toString() {
+        return "Developer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 
 
-
-    public Developer(int id, String name, String sex, int salary) {}
+    public Developer(int id, String name, String sex, int salary) {
+    }
 
     public Developer() {
 

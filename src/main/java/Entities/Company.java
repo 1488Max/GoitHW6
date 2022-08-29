@@ -12,6 +12,23 @@ import java.util.List;
 @RequiredArgsConstructor
 @Table(name = "company")
 public class Company {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = "name")
+    @NonNull
+    private String name;
+
+    @Column(name = "area")
+    @NonNull
+    private String area;
+
+
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Project> projects;
+
     public long getId() {
         return id;
     }
@@ -44,22 +61,7 @@ public class Company {
         this.projects = projects;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
 
-    @Column(name = "name")
-    @NonNull
-    private String name;
-
-    @Column(name = "area")
-    @NonNull
-    private String area;
-
-
-    @OneToMany(mappedBy = "company",fetch = FetchType.EAGER)
-    private List<Project> projects;
-
-    public Company() {}
+    public Company() {
+    }
 }

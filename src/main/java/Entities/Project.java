@@ -1,7 +1,6 @@
 package Entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -23,19 +22,19 @@ public class Project {
 
     @Column(name = "time_of_creation")
     @NonNull
-    private String time_of_creation;
+    private String timeOfCreation;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "developer_project",
             joinColumns = @JoinColumn(name = "project_id"),
@@ -44,7 +43,8 @@ public class Project {
     private List<Developer> developers;
 
 
-    public Project(String name, String time_of_creation, long customerId, long id) {}
+    public Project(String name, String timeOfCreation, long customerId, long id) {
+    }
 
     public Project() {
 
@@ -55,7 +55,7 @@ public class Project {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", time_of_creation='" + time_of_creation + '\'' +
+                ", time_of_creation='" + timeOfCreation + '\'' +
                 '}';
     }
 
@@ -75,12 +75,12 @@ public class Project {
         this.name = name;
     }
 
-    public String getTime_of_creation() {
-        return time_of_creation;
+    public String getTimeOfCreation() {
+        return timeOfCreation;
     }
 
-    public void setTime_of_creation(String time_of_creation) {
-        this.time_of_creation = time_of_creation;
+    public void setTimeOfCreation(String time_of_creation) {
+        this.timeOfCreation = time_of_creation;
     }
 
     public Company getCompany() {

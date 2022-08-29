@@ -1,6 +1,5 @@
 package HibernateDao;
 
-import Entities.Developer;
 import Entities.Project;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,7 +13,7 @@ public class ProjectDao {
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.save(project);
+        session.persist(project);
 
         session.getTransaction().commit();
 
@@ -38,7 +37,7 @@ public class ProjectDao {
         session.beginTransaction();
         Project newProject = session.get(Project.class, id);
         newProject.setName(project.getName());
-        newProject.setTime_of_creation(project.getTime_of_creation());
+        newProject.setTimeOfCreation(project.getTimeOfCreation());
         newProject.setCustomer(project.getCustomer());
         newProject.setCompany(project.getCompany());
         session.getTransaction().commit();
@@ -50,7 +49,7 @@ public class ProjectDao {
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        Project project= session.get(Project.class, id);
+        Project project = session.get(Project.class, id);
         session.remove(project);
         session.getTransaction().commit();
 
@@ -61,7 +60,7 @@ public class ProjectDao {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
 
-        return session.createQuery("select a from Project a",Project.class)
+        return session.createQuery("select a from Project a", Project.class)
                 .getResultList();
     }
 

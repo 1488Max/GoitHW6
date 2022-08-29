@@ -60,7 +60,7 @@ public class DeveloperDao {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
 
-        return session.createQuery("select a from Developer a",Developer.class)
+        return session.createQuery("select a from Developer a", Developer.class)
                 .getResultList();
     }
 

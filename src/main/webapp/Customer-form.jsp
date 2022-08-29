@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Customer Management Application</title>
@@ -41,21 +41,22 @@
                     </caption>
 
                     <c:if test="${customer != null}">
-                        <input type="hidden" name="id" value="<c:out value='${customer.id}' />" />
+                        <input type="hidden" name="id" value="<c:out value='${customer.id}' />"/>
                     </c:if>
 
                     <fieldset class="form-group">
                         <label>Customer Name</label> <input type="text"
-                                                             value="<c:out value='${customer.name}' />" class="form-control"
-                                                             name="name" required="required">
+                                                            value="<c:out value='${customer.name}' />"
+                                                            class="form-control"
+                                                            name="name" required="required">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label>Customer Surname</label> <input type="text"
-                                                            value="<c:out value='${customer.sex}' />" class="form-control"
-                                                            name="surname">
+                                                               value="<c:out value='${customer.sex}' />"
+                                                               class="form-control"
+                                                               name="surname">
                     </fieldset>
-
 
 
                     <button type="submit" class="btn btn-success">Save</button>

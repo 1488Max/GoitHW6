@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Project Management Application</title>
@@ -44,7 +44,7 @@
                 <th>Name</th>
                 <th>Time Of Creation</th>
                 <th>Customer</th>
-                <th>Company </th>
+                <th>Company</th>
 
             </tr>
             </thead>
@@ -53,11 +53,11 @@
             <c:forEach var="project" items="${listProject}">
 
                 <tr>
-                    <td><c:out value="${project.id}" /></td>
-                    <td><c:out value="${project.name}" /></td>
-                    <td><c:out value="${project.time_of_creation}" /></td>
-                    <td><c:out value="${project.customer}" /></td>
-                    <td><c:out value="${project.company}" /></td>
+                    <td><c:out value="${project.id}"/></td>
+                    <td><c:out value="${project.name}"/></td>
+                    <td><c:out value="${project.time_of_creation}"/></td>
+                    <td><c:out value="${project.customer}"/></td>
+                    <td><c:out value="${project.company}"/></td>
                     <td><a href="editProject?id=<c:out value='${project.id}' />">Edit</a>
                         <a href="deleteProject?id=<c:out value='${project.id}' />">Delete</a></td>
                 </tr>

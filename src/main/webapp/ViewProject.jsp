@@ -55,7 +55,7 @@
                 <tr>
                     <td><c:out value="${project.id}"/></td>
                     <td><c:out value="${project.name}"/></td>
-                    <td><c:out value="${project.time_of_creation}"/></td>
+                    <td><c:out value="${project.timeOfCreation}"/></td>
                     <td><c:out value="${project.customer}"/></td>
                     <td><c:out value="${project.company}"/></td>
                     <td><a href="editProject?id=<c:out value='${project.id}' />">Edit</a>

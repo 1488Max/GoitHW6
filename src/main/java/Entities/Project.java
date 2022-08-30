@@ -1,10 +1,13 @@
 package Entities;
 
+import HibernateDao.CompanyDao;
+import HibernateDao.CustomerDao;
 import jakarta.persistence.*;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -14,24 +17,24 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    protected long id;
 
     @Column(name = "name")
     @NonNull
-    private String name;
+    protected String name;
 
     @Column(name = "time_of_creation")
     @NonNull
-    private String timeOfCreation;
+    protected String timeOfCreation;
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    private Company company;
+    protected Company company;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    protected Customer customer;
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -40,10 +43,16 @@ public class Project {
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "developer_id")
     )
-    private List<Developer> developers;
+    protected List<Developer> developers;
 
 
-    public Project(String name, String timeOfCreation, long customerId, long id) {
+    public Project(String name, String timeOfCreation, long customerId, long companyId) {
+        this.name = name;
+        this.timeOfCreation = timeOfCreation;
+        this.company = CompanyDao.getCompany(companyId);
+        this.customer = CustomerDao.getCustomer(customerId);
+
+
     }
 
     public Project() {

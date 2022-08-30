@@ -14,7 +14,7 @@ public class DeveloperDao {
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.persist(developer);
+        session.saveOrUpdate(developer);
 
         session.getTransaction().commit();
 

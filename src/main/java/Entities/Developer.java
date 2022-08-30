@@ -15,19 +15,19 @@ public class Developer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    protected  long id;
 
     @Column(name = "name")
     @NonNull
-    private String name;
+    protected String name;
 
     @Column(name = "sex")
     @NonNull
-    private String sex;
+    protected String sex;
 
     @Column(name = "salary")
     @NonNull
-    private int salary;
+    protected int salary;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -35,7 +35,7 @@ public class Developer {
             joinColumns = @JoinColumn(name = "developer_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id")
     )
-    private List<Project> projects;
+    protected List<Project> projects;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -43,7 +43,7 @@ public class Developer {
             joinColumns = @JoinColumn(name = "skill_id"),
             inverseJoinColumns = @JoinColumn(name = "developer_id")
     )
-    private List<Skill> skills;
+    protected List<Skill> skills;
 
 
     public Developer(long id, @NonNull String name, @NonNull String sex, @NonNull int salary) {

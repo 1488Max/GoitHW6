@@ -1,5 +1,6 @@
 package HibernateDao;
 
+import Entities.Company;
 import Entities.Customer;
 
 import org.hibernate.Session;
@@ -9,60 +10,52 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 
-public class CustomerDao {
-    public static void createCustomer(Customer customer) {
+public class CompanyDao {
+    public static void createCompany(Company company) {
 
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.saveOrUpdate(customer);
+        session.saveOrUpdate(company);
 
         session.getTransaction().commit();
 
     }
 
-    public static Customer getCustomer(long id) {
+    public static Company getCompany(long id) {
 
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        Customer customer = session.get(Customer.class, id);
+        Company company = session.get(Company.class, id);
         session.getTransaction().commit();
 
-        return customer;
+        return company;
     }
 
-    public static void updateCustomer(Customer customer, long id) {
+    public static void updateCompany(Company company, long id) {
 
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        Customer newCustomer = session.get(Customer.class, id);
-        newCustomer.setName(customer.getName());
-        newCustomer.setSurname(customer.getSurname());
-        session.getTransaction().commit();
-
-    }
-
-    public static void deleteCustomer(long id) {
-
-        SessionFactory sessionFactory = HibernateDao.getSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Customer customer = session.get(Customer.class, id);
-        session.remove(customer);
+        Company newCompany = session.get(Company.class, id);
+        newCompany.setName(company.getName());
+        newCompany.setArea(company.getArea());
         session.getTransaction().commit();
 
     }
 
-    public static List<Customer> getAllCustomers() {
+    public static void deleteCompany(long id) {
+
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
+        Company company = session.get(Company.class, id);
+        session.remove(company);
+        session.getTransaction().commit();
 
-        return session.createQuery("select a from Customer a", Customer.class)
-                .getResultList();
     }
+
 
 
 }

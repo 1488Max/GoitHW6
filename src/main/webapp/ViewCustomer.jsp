@@ -67,9 +67,9 @@
     </div>
 </div>
 
-<a href="ViewDevelopers.jsp">ViewDeveloper</a><br>
+<a href="<%=request.getContextPath()%>/list">ViewDeveloper</a><br>
 
-<a href="ViewProject.jsp">View Projects</a><br>
+<a href="<%=request.getContextPath()%>/listProject">View Projects</a><br>
 
 </body>
 </html>

@@ -14,20 +14,20 @@ public class Customer {
 
     @Column(name = "name")
     @NonNull
-    private String name;
+    protected String name;
 
     @Column(name = "surname")
     @NonNull
-    private String surname;
+    protected String surname;
 
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Project> projects;
+    protected List<Project> projects;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    protected long id;
 
     public long getId() {
         return id;

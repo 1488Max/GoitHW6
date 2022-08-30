@@ -13,7 +13,7 @@ public class ProjectDao {
         SessionFactory sessionFactory = HibernateDao.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.persist(project);
+        session.saveOrUpdate(project);
 
         session.getTransaction().commit();
 

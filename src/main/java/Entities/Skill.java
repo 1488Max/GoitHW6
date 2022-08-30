@@ -16,15 +16,15 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    protected long id;
 
     @Column(name = "technology")
     @NonNull
-    private String technology;
+    protected String technology;
 
     @Column(name = "skill")
     @NonNull
-    private String skill;
+    protected String skill;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -32,7 +32,7 @@ public class Skill {
             joinColumns = @JoinColumn(name = "developer_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
-    private List<Developer> developers;
+    protected List<Developer> developers;
 
     public long getId() {
         return id;

@@ -8,26 +8,24 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @Entity
-@Data
 @RequiredArgsConstructor
 @Table(name = "company")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    protected long id;
 
     @Column(name = "name")
     @NonNull
-    private String name;
+    protected String name;
 
     @Column(name = "area")
     @NonNull
-    private String area;
-
-
+    protected String area;
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Project> projects;
+    protected List<Project> projects;
+
 
     public long getId() {
         return id;
@@ -49,17 +47,19 @@ public class Company {
         return area;
     }
 
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", area='" + area + '\'' +
+                '}';
+    }
+
     public void setArea(String area) {
         this.area = area;
     }
 
-    public List<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
-    }
 
 
     public Company() {

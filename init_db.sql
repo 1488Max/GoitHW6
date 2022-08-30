@@ -33,7 +33,7 @@ Create table project
 (
     id               BIGINT AUTO_INCREMENT,
     name             varchar(100),
-    time_of_creation DATE,
+    time_of_creation varchar(255),
     customer_id      BIGINT,
     company_id       BIGINT,
     foreign key (customer_id) REFERENCES customer (id) ON DELETE CASCADE,
